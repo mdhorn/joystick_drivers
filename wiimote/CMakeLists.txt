@@ -53,6 +53,13 @@ target_link_libraries(wiimote_node ${catkin_LIBRARIES} bluetooth cwiid)
 add_dependencies(wiimote_node wiimote_generate_messages_cpp)
 ## End of C++ Wiimote Node
 
+## C++ Teleop for Wiimote Node: Declare cpp executables
+add_executable(teleop_wiimote src/teleop_wiimote.cpp)
+set_target_properties(teleop_wiimote PROPERTIES COMPILE_FLAGS ${DEFAULT_COMPILE_FLAGS})
+target_link_libraries(teleop_wiimote ${catkin_LIBRARIES})
+add_dependencies(teleop_wiimote wiimote_generate_messages_cpp)
+## End C++ Teleop for Wiimote Node
+
 # Install targets
 install(PROGRAMS nodes/feedbackTester.py  nodes/wiimote_node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
